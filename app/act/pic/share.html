@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include('../../template/head.html')
+    <title>红包再次来袭</title>
+    <style type="text/css">
+        a,
+        body {
+            -webkit-tap-highlight-color: transparent
+        }
+
+        .bg {
+            background-image: url('@@ROOT/act/pic/img/hb_bg.jpg');
+            width: 6.4rem;
+            height: 24.38rem;
+            background-size: 100% 100%;
+            background-repeat: repeat-y;
+            position: relative
+        }
+
+        .bg .appShareInfo {
+            position: absolute;
+            width: 5.28rem;
+            height: 1.27rem;
+            bottom: 8.9rem;
+            left: .56rem;
+            display: none;
+        }
+
+        .bg .wxCode {
+            position: absolute;
+            width: 1.75rem;
+            height: 1.75rem;
+            bottom: 6.45rem;
+            left: .72rem
+        }
+
+        .bg .appCode {
+            position: absolute;
+            width: 2.3rem;
+            height: .8rem;
+            bottom: 6.9rem;
+            right: .65rem
+        }
+
+        .bg .wxInfo {
+            position: absolute;
+            width: 4.61rem;
+            height: .7rem;
+            bottom: 9.2rem;
+            left: .8rem;
+            display: none;
+        }
+
+        .bg .fc {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .8);
+            color: #fff;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            text-align: right;
+            display: none;
+        }
+
+        .bg .fc img {
+            width: 90%;
+            height: auto;
+            margin: auto;
+        }
+
+        .bg .tips {
+            position: fixed;
+            z-index: 3;
+            width: 60%;
+            min-height: 100px;
+            line-height: 100px;
+            padding: 5%;
+            font-size: 16px;
+            margin: 0 auto;
+            top: 180px;
+            left: 15%;
+            right: 15%;
+            background: rgba(40, 40, 40, 0.75);
+            border-radius: 5px;
+            color: #FFFFFF;
+            text-align: center;
+            display: none
+        }
+    </style>
+</head>
+
+<body class="bg">
+    <div class="wxCode">
+        <img src="@@ROOT/act/pic/img/gzh_code.png">
+    </div>
+    <div class="appCode" id="btn_download">
+        <img src="@@ROOT/act/pic/img/btn_dl.png">
+    </div>
+    <div class="appShareInfo" id="wxHide">
+        <img src="@@ROOT/act/pic/img/share.png">
+    </div>
+    <div class="wxInfo" id="wxInfo">
+        <img src="@@ROOT/act/pic/img/wx_share.png">
+    </div>
+    <div class="fc" id="fc">
+        <img src="@@ROOT/act/pic/img/browser.png" />
+    </div>
+    <div class="tips"></div>
+    @@include('../../template/foot.html')
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript">
+        (function() {
+            var guUrlObj = {
+                "desktop": "http://192.168.10.242:8181",
+                "development": "http://m.1332255.com",
+                "production": "http://m.13322.com"
+            }
+            if (mobileUtil.isWeixin) {
+                $('#wxHide').hide();
+                $('#wxInfo').show();
+            } else {
+                $('#wxHide').show();
+                $('#wxInfo').hide();
+            }
+            $('#btn_download').on('click', function() {
+                if (mobileUtil.isIos) {
+                    if (mobileUtil.isWeixin) {
+                        $('#fc').show();
+                    } else {
+                        window.location.href = 'https://lnk0.com/RFxlck';
+                    }
+                }
+                if (mobileUtil.isAndroid) {
+                    showTip("该活动仅限IOS用户", 2000);
+                }
+            });
+
+            function showTip(msg, time) {
+                $(".tips").show();
+                $(".tips").html(msg);
+                window.setTimeout(function() {
+                    $(".tips").hide();
+                }, time);
+            }
+            //微信分享
+            var shareParam = {
+                url: window.location.href,
+                title: '百万红包限时领，粉丝福利你来拿',
+                desc: '一比分与你共享欧洲杯荣耀，心动不如行动',
+                imgUrl: guUrlObj["production"] + '/active/act/pic/img/wx_icon.jpg'
+            }
+            WxUtil.share("", shareParam);
+        })(Zepto);
+    </script>
+</body>
+
+</html>

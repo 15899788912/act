@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	@@include('../../template/head.html')
+	<title>欧洲杯竞猜活动</title>
+	<style type="text/css">
+	   html{background:url('@@ROOT/act/EuroCup/img/pc_bg.jpg') no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover}
+		.pc_contain{/*overflow: hidden;position: relative; */}
+		.pc_contain .phone{position:absolute;width:395px;height:808px;top:10%;left:25%}
+		.pc_contain .phone .ifmBox{position:absolute;top:101px;left:31px}
+		.pc_contain .share{position:absolute;width:300px;height:400px;right:18%;top:23%;color:#fff;text-align:center}
+		.pc_contain .share p{font-size:20px;margin:11px 0}
+		.pc_contain .share .sha_code{width:200px;height:200px;margin-left:50px}
+	</style>
+</head>
+<body>
+	<div class="pc_contain">
+		<!-- <img src="/act/EuroCup/pc_bg.jpg"> -->
+		<div class="phone">
+			<img src="@@ROOT/act/EuroCup/img/pc_phone.png">
+			<div class="ifmBox">
+				<iframe src="./index.html" width="330" height="588" class="iframe" name="iframe1" scrolling="no" frameborder="0"></iframe>
+			</div>
+		</div>
+		<div class="share">
+			<p>扫一扫，分享给朋友！</p>
+			<div class="sha_code">
+				<img src="@@ROOT/act/EuroCup/img/code.png">
+			</div>
+			<p>请使用谷歌、Safari浏览器体验</p>
+		</div>
+	</div>
+<script type="text/javascript">
+  /*百度统计*/
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?345812d171023c73cbadf698c633b1a6";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>

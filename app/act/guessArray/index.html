@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	@@include('../../template/head.html')
+	<title>猜阵容</title>
+	<link rel="stylesheet" type="text/css" href="@@ROOT/act/guessArray/index.css">
+</head>
+
+<body>
+
+	<div class="page-1">
+		<img src="@@ROOT/act/guessArray/img/bg.png" usemap="#detail" class="page-bg-img">
+		<map name="detail">
+			<area shape="circle" coords="329,181,60" class="open_details" />
+		</map>
+
+		<p class="zi-show">第<span>1</span>比赛日</p>
+		<div class="games">
+			<!-- 内容 -->
+		</div>
+
+		<div class="select">
+			<img src="@@ROOT/act/guessArray/img/select_btn.png" alt="" class="select-btn" />
+		</div>
+
+	</div>
+	<input type="hidden" id="_page" value="1" />
+
+	<!-- 详情    -->
+	<div class="details">
+		<img src="@@ROOT/act/guessArray/img/details.png" />
+		<div class="btn_close"></div>
+	</div>
+
+	<!-- tips -->
+	<div class="tips">
+		<p class="t_info">请输入手机号</p>
+	</div>
+	<div class="mask" id="J_Mask">
+		<img src="@@ROOT/act/guessArray/img/loading.gif">
+	</div>
+
+	@@include('../../template/foot.html')
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="@@ROOT/act/guessArray/index.js"></script>
+	<script type="text/javascript">
+		@@include('./countdown.js')
+	</script>
+
+</body>
+
+</html>

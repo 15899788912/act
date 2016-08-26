@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		@import '../../template/head.html';
+		<title>猜阵容</title>
+		<style type="text/css">
+			@import './index@@MINEXT.css';
+		</style>
+	</head>
+
+	<body>
+
+		<div class="page-2">
+			<img src="img/bg-2.png" style="width: 6.4rem;height: 11.46rem;" />
+			<div class="suiji">
+				<img src="img/suiji.png" class="suiji-img"/>
+			</div>
+			<div class="team-show">
+				<div class="arrayTeam-1">
+					<div class="flag-hand">
+						<div class="qi-img icon-qrs"></div>
+						<span class="qi-name homeTeam">奥地利</span>
+						<img src="img/hand.png" class="hand" />
+					</div>
+					<div class="team-person">
+						<div class="person">
+							<img src="img/person.png" />
+						</div>
+						<div class="persons">
+							<ul>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="arrayTeam-2">
+					<div class="flag-hand">
+						<div class="qi-img icon-qaebny"></div>
+						<span class="qi-name guestTeam">奥地利</span>
+						<img src="img/hand.png" class="hand" />
+					</div>
+					<div class="team-person">
+						<div class="persons">
+							<ul>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+							</ul>
+						</div>
+						<div class="person">
+							<img src="img/person.png" />
+						</div>
+					</div>
+				</div>
+
+				<div class="arrayTeam-3">
+					<img src="img/btn_zi.png" class="zi-img" />
+					<div class="choosePerson">
+						<div class="flag">
+							<div class=""></div>
+							<span id="choose_name"></span>
+						</div>
+						<div class="persons" id="choose_persons">
+							<ul>
+							<!--<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>
+							<li><img src="img/person-name.png" /></li>-->
+								<div class="clear"></div>
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<input type="hidden" id="_page" value="2" />
+
+		<!-- tips -->
+		<div class="tips">
+			<p class="t_info">请输入手机号</p>
+		</div>
+		<div class="mask" id="J_Mask">
+			<img src="@@IMGURL/loading.gif">
+		</div>
+
+		@import '../../template/foot.html';
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script type="text/javascript">
+			@import './index@@MINEXT.js';
+		</script>
+
+	</body>
+
+</html>

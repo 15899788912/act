@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	@@include('../../template/head.html')
+	<title>关注一比分</title>
+	<link rel="stylesheet" type=" " href="@@ROOT/act/guess/index.css">
+</head>
+<body>
+	<div class="foc_contain">
+		<img src="@@ROOT/act/guess/img/gz_bg.jpg">
+		<div class="btn_focus" id="gu_focus" style="display:none;">关  注</div>
+		<div class="surprised" id="gu_jx">扫 码 有 惊 喜！</div>
+	</div>
+	@@include('../../template/foot.html')
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+		(function($){
+			//判断是否为微信
+			if(mobileUtil.isWeixin){
+				$("#gu_focus").show();
+				$("#gu_jx").hide();
+			}
+			$("#gu_focus").on("click",function(event) {
+				// 链接至微信端
+				location.href='http://dwz.cn/3oThKd';
+			});
+			var wxUrl='http://m.1332255.com/active/act/guess/index.html';
+			var shareParam={
+				url:wxUrl,
+				desc :'马竞是否会一路披荆斩棘，首度捧起大耳朵杯？',
+		        title :'直通圣西罗，欧冠狂欢夜',
+		        imgUrl : 'http://m.1332255.com/active/act/guess/img/wx_icon.jpg'
+			}
+			WxUtil.share(wxUrl,shareParam);
+		})(Zepto);
+	</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	@@include('../../template/head.html')
+	<title>欧洲杯竞猜活动</title>
+	<link rel="stylesheet" type="text/css" href="@@ROOT/act/dailyGuess/index.css">
+</head>
+<body>
+	<div class="contain">
+		<img src="@@ROOT/act/dailyGuess/img/res_bg.png" class="c-bg">
+		<div class="backBox"><div class="back"></div></div>
+		<div class="res-btns">
+				<ul>
+					<li class="blue"><span class="dt14">第14比赛日获奖</span></li>
+					<li class="blue"><span class="dt19">第19比赛日获奖</span></li>
+					<li class="blue"><span class="dt15">第15比赛日获奖</span></li>
+					<li class="blue"><span class="dt20">第20比赛日获奖</span></li>
+					<li class="blue"><span class="dt16">第16比赛日获奖</span></li>
+					<li class="blue"><span class="dt21">第21比赛日获奖</span></li>
+					<li class="blue"><span class="dt17">第17比赛日获奖</span></li>
+					<li class="blue"><span class="dt22">第22比赛日获奖</span></li>
+					<li class="blue"><span class="dt18">第18比赛日获奖</span></li>
+					<li class="blue border-blue"><span class="dt23">第23比赛日获奖</span></li>
+					<!-- <div class="clear"></div> -->
+				</ul>
+		</div>
+
+		<div class="result-img">
+			<img src="@@ROOT/act/dailyGuess/img/dt23.png" alt="" />
+		</div>
+
+	</div>
+	@@include('../../template/foot.html')
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+		(function(){
+			var gu_urlObj={
+				"desktop":"http://192.168.10.242:8181",
+			    "development": "http://m.1332255.com",
+			    "production": "http://m.13322.com"
+			}
+			var guessUrl=gu_urlObj["production"]; //环境切换
+			//返回
+			$(".back").on("click",function(event){
+				history.back();
+				document.body.scrollTop=0;//回到顶部
+			});
+
+			setTimeout(function () {
+				$(".res-btns").show();
+			},100);
+
+			//显示结果
+			$(".res-btns ul li").click(function() {
+					var _res = $(this).find("span").attr("class");
+					var _status = $(this).attr("class");
+					if(_res.length !== 0 && _status === "blue"){
+						$(".res-btns ul li").removeClass('border-blue');
+						$(this).addClass('border-blue');
+						showResult(_res);
+					}
+			});
+
+			function showResult(imgUrl) {
+				var imgJson={'dt14':'@@ROOT/act/dailyGuess/img/dt14.png','dt15':'@@ROOT/act/dailyGuess/img/dt15.png','dt16':'@@ROOT/act/dailyGuess/img/dt16.png','dt17':'@@ROOT/act/dailyGuess/img/dt17.png','dt18':'@@ROOT/act/dailyGuess/img/dt18.png','dt19':'@@ROOT/act/dailyGuess/img/dt19.png','dt20':'@@ROOT/act/dailyGuess/img/dt20.png','dt21':'@@ROOT/act/dailyGuess/img/dt21.png','dt22':'@@ROOT/act/dailyGuess/img/dt22.png','dt23':'@@ROOT/act/dailyGuess/img/dt23.png'};
+				$(".result-img img").attr("src",imgJson[imgUrl]);
+			}
+
+
+			//微信分享
+			var shareParam={
+				url:guessUrl+'/active/act/dailyGuess/index.html',
+				title :'欧洲杯 每日猜猜猜，答题享好礼',
+				desc :'有竞猜，更精彩！',
+		        imgUrl : guessUrl+'/active/act/dailyGuess/img/wx_icon.jpg'
+			}
+			WxUtil.share("",shareParam);
+		})(Zepto);
+	</script>
+	</body>
+</html>

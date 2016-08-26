@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	@@include('../../template/head.html')
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="@@ROOT/act/olympicGames/index.css">
+	<link rel="stylesheet" type="text/css" href="/widgets/swiper/swiper-3.3.1.min.css">
+</head>
+<body>
+	<!-- 答题 -->
+	<div class="ans_contain">
+	    <div class="backBox"><div class="back"></div></div>
+		<form id="ansForm">
+		<div class="swiper-container">
+		<ul class="ans_list swiper-wrapper">
+			<!-- 题目内容 -->
+			<li class="no_found"><p>今日暂无竞猜题目</p></li>
+		</ul>
+		</div>
+		</form>
+		<!-- tips -->
+		<div class="tips">
+			<p class="t_info">请输入手机号</p>
+		</div>
+		<div class="mask" id="J_Mask">
+			<img src="@@ROOT/act/olympicGames/img/loading.gif">
+		</div>
+	</div>
+	<!-- 关注 -->
+	<div class="foc_contain">
+		<img src="@@ROOT/act/olympicGames/img/gz_bg.jpg">
+		<div class="btn_focus" id="gu_focus" style="display:none;">关  注</div>
+		<div class="surprised" id="gu_jx">扫 码 有 惊 喜！</div>
+	</div>
+	@@include('../../template/foot.html')
+	<script type="text/javascript" src="/widgets/swiper/swiper-3.3.1.min.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="@@ROOT/act/olympicGames/index.js"></script>
+	</body>
+</html>

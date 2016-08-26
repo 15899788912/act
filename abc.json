@@ -1,0 +1,33 @@
+{
+	"env": "desktop",
+	"name": "active",
+	"desc": "m.13322.com/active/dist/",
+	"version":"v0.1.3",
+	"imgBase": {
+		"desktop": "./img",
+		"development": "./img",
+		"production": "./img"
+	},
+	"pathConfig":{
+	    "script": "app/**/*.js",
+	    "css": "app/**/*.css",
+	    "less": "app/**/*.{less,css}",
+	    "img": "app/**/*.{png,jpg,jpeg,gif,ico}",
+	    "json":"app/**/*.json",
+	    "html": "app/**/*.html",
+	    "all": "app/**/*.*",
+	    "dst": "dist",
+	    "dstAll": "dist/**/*.*",
+	    "revScript": "rev/js",
+	    "revCss": "rev/css",
+	    "revImg": "rev/img",
+	    "revJson": "rev/json",
+	    "rev": "rev",
+	    "ofile":"app/**/*.{ttf,json,mp3,mp4,swf,txt}",
+	    "bid":"build"
+	},
+	"author": {
+	  "name": "Tiger",
+	  "email": "liuh@13322.com"
+	}
+}

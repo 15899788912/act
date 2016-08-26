@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	@@include('../../template/head.html')
+	<title>猜阵容</title>
+	<link rel="stylesheet" type="text/css" href="@@ROOT/act/guessArray/index.css">
+</head>
+
+<body>
+
+	<div class="page-1">
+		<img src="@@ROOT/act/guessArray/img/bg-3.png" usemap="#detail" class="page-bg3-img">
+		<map name="detail">
+			<area shape="circle" coords="329,181,60" class="open_details" />
+		</map>
+
+		<img src="@@ROOT/act/guessArray/img/select.png" alt="" class="select-logo" />
+
+		<div class="bscc">
+			<ul>
+				<li><img src="@@ROOT/act/guessArray/img/guest8.png" alt="8" /></li>
+				<li><img src="@@ROOT/act/guessArray/img/guest7.png" alt="7" /></li>
+				<li><img src="@@ROOT/act/guessArray/img/guest6.png" alt="6" /></li>
+				<li><img src="@@ROOT/act/guessArray/img/guest5.png" alt="5" /></li>
+			</ul>
+			<ul class="noResult">
+				<li><img src="@@ROOT/act/guessArray/img/guest4.png" alt="4" /></li>
+				<li><img src="@@ROOT/act/guessArray/img/guest3.png" alt="3" /></li>
+				<li class="chooseGuess"><img src="@@ROOT/act/guessArray/img/guest2.png" alt="2" /></li>
+			</ul>
+		</div>
+
+		<div class="performance">
+			<div class="per-overflow">
+				<img src="@@ROOT/act/guessArray/img/result2.png" alt="" class="per-img" id="per-img" />
+			</div>
+		</div>
+
+		<div class="per-black">
+
+		</div>
+
+
+	</div>
+	<input type="hidden" id="_page" value="5" />
+
+	<!-- 详情    -->
+	<div class="details">
+		<img src="@@ROOT/act/guessArray/img/details.png" />
+		<div class="btn_close"></div>
+	</div>
+
+	<!-- tips -->
+	<div class="tips">
+		<p class="t_info">请输入手机号</p>
+	</div>
+	<div class="mask" id="J_Mask">
+		<img src="@@ROOT/act/guessArray/img/loading.gif">
+	</div>
+
+	@@include('../../template/foot.html')
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="@@ROOT/act/guessArray/index.js"></script>
+	<script type="text/javascript">
+		@@include('./countdown.js')
+	</script>
+	<script type="text/javascript">
+		(function() {
+			var gu_urlObj = {
+				"desktop": "http://192.168.10.242:8181",
+				"development": "http://m.1332255.com",
+				"production": "http://m.13322.com"
+			}
+			var guessUrl = gu_urlObj["production"]; //环境切换
+			$(".per-black").click(function() {
+				history.back();
+				window.body.scrollTop = 0;
+			});
+
+			$(".bscc ul li img").click(function() {
+				var tag = $(this).attr('alt');
+				$(".bscc ul li").removeClass("chooseGuess");
+				$(this).parent().addClass("chooseGuess");
+				$("#per-img").attr("src", "@@ROOT/act/guessArray/img/result" + tag + ".png");
+			});
+			//微信分享
+			var shareParam = {
+				url: guessUrl + '/active/act/dailyGuess/index.html',
+				desc: '我来当主帅，有奖排首发. 快来挑战现金大奖吧！',
+				title: '我来当主帅，有奖排首发. 快来挑战现金大奖吧！',
+				imgUrl: guessUrl + '/active/act/guessArray/img/share-icon.png'
+			}
+			WxUtil.share("", shareParam);
+		})(Zepto);
+	</script>
+
+</body>
+
+</html>

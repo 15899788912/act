@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		@import '../../template/head.html';
+		<title>猜阵容</title>
+		<style type="text/css">
+			@import './index@@MINEXT.css';
+		</style>
+	</head>
+
+	<body>
+
+		<div class="page-4">
+
+			<img src="img/res_bg.jpg" class="page-bg-img"/>
+			<div class="share-img">
+				<img src="img/weixin.png" />
+			</div>
+			<div class="team-show">
+				<div class="arrayTeam-1">
+					<div class="flag-hand">
+						<div class="qi-img"></div>
+						<span class="qi-name">奥地利</span>
+					</div>
+					<div class="team-person">
+						<div class="person">
+							<img src="img/person.png" />
+						</div>
+						<div class="persons">
+							<ul>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="arrayTeam-2">
+					<div class="flag-hand">
+						<div class="qi-img"></div>
+						<span class="qi-name">奥地利</span>
+					</div>
+					<div class="team-person">
+
+						<div class="persons">
+							<ul>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+								<li><img src="img/person.png" /></li>
+							</ul>
+						</div>
+						<div class="person">
+							<img src="img/person.png" />
+						</div>
+					</div>
+				</div>
+
+				<div class="message">
+					<div class="info">
+						<p>比赛时间：<span id="_matchTime">2016-6-28</span></p>
+						<p>比赛性质：<span id="_property">2016欧洲杯1/8决赛</span></p>
+						<p>比赛对阵：<span id="_vs">德国&nbsp;VS&nbsp;意大利</span></p>
+						<p>比赛场地：<span id="_place">法兰西大球场</span></p>
+					</div>
+				</div>
+				
+				<div class="again">
+					<div class="again-button">
+						<img src="img/btn_meizi.png"/>
+						<span class="again-click">立即参与</span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<input type="hidden" id="_page" value="4" />
+
+		<!-- tips -->
+		<div class="tips">
+			<p class="t_info">请输入手机号</p>
+		</div>
+		<div class="mask" id="J_Mask">
+			<img src="@@IMGURL/loading.gif">
+		</div>
+
+		@import '../../template/foot.html';
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script type="text/javascript">
+			@import './index@@MINEXT.js';
+		</script>
+		
+	</body>
+
+</html>

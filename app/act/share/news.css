@@ -1,0 +1,472 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0
+}
+html {
+    /*10 ÷ 16 × 100% = 62.5%*/
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+h1 {
+    font-size: .24rem;
+    /*2.4 × 10px = 24px*/
+}
+html.ns {
+    overflow: hidden
+}
+body {
+    font: 400 .14rem/1.5 "\5FAE\8F6F\96C5\9ED1", Helvetica;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    outline: 0 none;
+}
+html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
+    -webkit-text-size-adjust: none
+}
+img {
+    border: 0
+}
+ol, ul, li {
+    list-style: none
+}
+dl, dt, dd, ul, li {
+    margin: 0;
+    padding: 0
+}
+input, textarea {
+    outline: 0 none
+}
+a {
+    text-decoration: none;
+}
+em, i {
+    font-style: normal
+}
+.fl {
+    float: left
+}
+.fr {
+    float: right
+}
+.clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+.align_l {
+    text-align: left;
+}
+.align_c {
+    text-align: center;
+}
+.align_r {
+    text-align: right;
+}
+.goback, .newsMenu {
+    background: url(../images/newsIcon.png) no-repeat;
+    display: inline-block;
+    background-size: 75px 75px;
+}
+.goback {
+    background-position: 0px 0px;
+    width: 25px;
+    height: 35px;
+    float: left;
+    margin-top: 10px;
+    padding: 0 5px;
+}
+.newsMenu {
+    background-position: -35px 0px;
+    width: 25px;
+    height: 25px;
+    float: right;
+    margin-top: 12px;
+    padding: 5px;
+}
+
+/*头部*/
+
+#header {
+    background: #1581cc;
+    width: 100%;
+    z-index: 999;
+    min-height: .45rem;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    overflow: hidden;
+}
+.wrap {
+    margin: 0 10px;
+}
+#header .wrap .title {
+    line-height: 50px;
+    color: #fff;
+    position: relative;
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+    font-size: 18px;
+    text-indent: -0.2rem;
+}
+.newsNav {
+    height: .38rem;
+    line-height: .38rem;
+    background-color: #f5f5f5;
+}
+.newsNav a {
+    color: #333;
+    font-size: .15rem;
+    float: left;
+    width: 20%;
+    text-align: center;
+    text-decoration: none;
+    height: .35rem;
+}
+.newsNav a:visited {
+    color: #333;
+}
+.newsNav a.active {
+    color: #1581cc;
+    border-bottom: 3px solid #1581cc;
+}
+
+/*外框架*/
+
+.content {
+    margin-top: .83rem;
+    width: 100%;
+}
+
+/*首页*/
+
+#banner {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+#banner .swiper-slide {
+    position: relative;
+    text-align: center;
+}
+#banner img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+.gallerytitle {
+    text-align: left;
+    font-size: .16rem;
+    height: .35rem;
+    line-height: .35rem;
+    color: #fafafa;
+    position: absolute;
+    left: 0;
+    bottom: 0.06rem;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-indent: .1rem;
+    overflow: hidden;
+}
+.pagination {
+    position: absolute;
+    z-index: 20;
+    bottom: .1rem;
+    text-align: center;
+    right: .1rem;
+}
+.swiper-pagination-bullet {
+    display: inline-block;
+    width: 0.06rem;
+    height: 0.06rem;
+    border-radius: 0.6rem;
+    background: #fff;
+    margin: 0 0.02rem;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.swiper-pagination-bullet-active {
+    background: #ff6600;
+}
+.newsList>li {
+    border-bottom: 1px solid #e5e5e5;
+    margin: 0 .12rem
+}
+.newsList>li.selected {
+    background: #f1f1f1
+}
+.newsList>li:last-child .a-lk {
+    border-bottom: 0
+}
+.newsList>li .a-lk {
+    display: -webkit-box;
+    display: block;
+    padding: .1rem 0 .1rem;
+    height: .75rem;
+    color: #333;
+}
+.newsList>li .a-lk:hover {
+    text-decoration: none;
+}
+.newsList>li .a-lk:visited {
+    color: #888
+}
+.newsList>li .u-img {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 1rem;
+    height: .75rem;
+    float: left;
+    margin-right: 0.14rem
+}
+.newsList>li .detail {
+    overflow: hidden;
+    height: .75rem;
+    position: relative;
+}
+.newsList>li .detail strong {
+    font-size: .15rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+.newsList>li .detail .info {
+    position: absolute;
+    left: 0;
+    bottom: .01rem;
+    width: 100%;
+    height: .15rem;
+    line-height: 1.2;
+    color: #999;
+    font-size: .12rem;
+}
+.newsList>li .detail .info .icon {
+    background-color: #1581cc;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    display: block;
+    width: .3rem;
+    height: .15rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    font-size: 0.1rem;
+    color: #fff;
+    text-align: center;
+    line-height: 0.15rem;
+}
+
+/*赛事预测、胜平负、大小球*/
+
+.bdbg {
+    background-color: #f5f5f5;
+}
+.forecast-list>li {
+    border-bottom: 1px solid #e5e5e5;
+    padding: .1rem .12rem;
+    height: .75rem;
+    margin-bottom: .05rem;
+    background-color: #fff;
+}
+.forecast-list>li>a {
+    color: #333;
+}
+.forecast-list>li>a:hover {
+    text-decoration: none;
+}
+.forecast-list>li>a:visited {
+    color: #888
+}
+.forecast-list>li .detail {
+    overflow: hidden;
+    height: .75rem;
+    position: relative;
+}
+.forecast-list>li .detail strong {
+    font-size: .15rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+.forecast-list>li .detail .info {
+    position: absolute;
+    left: 0;
+    bottom: .01rem;
+    width: 100%;
+    height: .15rem;
+    line-height: 1.2;
+    color: #999;
+    font-size: .12rem;
+}
+.forecast-list>li .detail .info .icon {
+    background-color: #eb6100;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    display: inline-block;
+    width: .3rem;
+    height: .15rem;
+    font-size: 0.1rem;
+    color: #fff;
+    text-align: center;
+    line-height: 0.15rem;
+    margin: 0 .1rem 0 0;
+}
+.forecast-list>li .detail .info .recommend {
+    color: #333;
+    font-size: .14rem;
+    font-weight: 400;
+    line-height: 0.15rem;
+}
+.forecast-list>li .detail .info .wdlIcon {
+    background-color: #1581cc;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    display: inline-block;
+    width: .3rem;
+    height: .15rem;
+    font-size: 0.1rem;
+    color: #fff;
+    text-align: center;
+    line-height: 0.15rem;
+    margin: 0 .1rem 0 0;
+}
+.forecast-list>li .detail .info .vsText {
+    color: #999;
+    font-size: .14rem;
+    font-weight: 400;
+    line-height: 0.15rem;
+}
+.forecast-list>li .detail .info .day {
+    color: #999;
+    font-size: .14rem;
+    font-weight: 400;
+    line-height: 0.15rem;
+    display: inline-block;
+    margin-right: 0.1rem;
+}
+.forecast-list>li .wdl-img {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    float: right;
+    margin-left: 0.1rem;
+    width: .85rem;
+    height: .75rem
+}
+.win, .draw, .lose, .bigBall, .smallBall {
+    background: url(../images/sealIcon.png) no-repeat;
+    background-size: 200px 300px;
+}
+.win {
+    background-position: -5px -10px;
+}
+.draw {
+    background-position: -105px -10px;
+}
+.lose {
+    background-position: -5px -105px;
+}
+.bigBall {
+    background-position: -105px -105px;
+}
+.smallBall {
+    background-position: -5px -110px;
+}
+
+/*内容页*/
+
+.contentBody {
+    width: 100%;
+}
+.news-article {
+    padding: 0 0.15rem;
+    margin-bottom: .45rem;
+}
+.news-article .title {
+    font-size: 0.22rem;
+    line-height: 0.28rem;
+    padding: 0.16rem 0 0;
+    font-style: normal;
+    font-weight: 400;
+}
+.news-article .from {
+    color: #999;
+    font-size: 0.12rem;
+    line-height: 1.2;
+    font-size: 0.12rem;
+    line-height: 1.2;
+    margin: 0.1rem 0 0;
+    padding-bottom: 0.1rem;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+}
+.news-article .article {
+    padding: 15px 0 0px;
+    line-height: 29px;
+    font-size: 16px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.news-article .article p {
+    margin-bottom: 0.15rem;
+}
+.news-article .article img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+}
+.lk-more {
+    margin: 0.2rem 0;
+}
+.lk-more .lk-btn {
+    color: #fff;
+    font-size: .18rem;
+    height: 0.42rem;
+    line-height: 0.42rem;
+    border-bottom: 3px solid #106ac5;
+    background-color: #1581cc;
+    text-align: center;
+    -ms-border-radius: 0.05rem;
+    -webkit-border-radius: 0.05rem;
+    border-radius: 0.05rem;
+    display: block;
+}
+
+/* 头部悬浮下载条  */
+
+.s_down {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: none;
+}
+.wx_mask {
+    z-index: 10010;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+    position: fixed;
+    color: #fff;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: none
+}
+.wx_mask .wxImg {
+    margin: 0 20px 0 35px;
+}
+.s_down img, .wx_mask img {
+    width: 100%;
+    height: auto;
+}

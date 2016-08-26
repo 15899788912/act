@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	@@include('../../template/head.html')
+	<title>欧洲杯竞猜活动</title>
+	<link rel="stylesheet" type="text/css" href="@@ROOT/act/dailyGuess/index.css">
+</head>
+<body>
+	<div class="contain">
+		<img src="@@ROOT/act/dailyGuess/img/fm_bg.jpg">
+		<div class="gu_title"></div>
+		<div class="teamvs animated">
+			<img src="@@ROOT/act/dailyGuess/img/btn_start.png" class="btn-start">
+			<img src="@@ROOT/act/dailyGuess/img/btn_res.png" alt="" class="btn-res"/>
+		</div>
+		<div class="btn_rule">
+			<img src="@@ROOT/act/dailyGuess/img/gz.png">
+		</div>
+	</div>
+	@@include('../../template/foot.html')
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+		(function(){
+			var gu_urlObj={
+				"desktop":"http://192.168.10.242:8181",
+			    "development": "http://m.1332255.com",
+			    "production": "http://m.13322.com"
+			}
+			var guessUrl=gu_urlObj["production"]; //环境切换
+			// 开始答题
+			$(".teamvs .btn-start").on("click",function(event) {
+				window.location.href="./subject.html";
+			});
+			$(".gu_title").on("click",function(event) {
+				window.location.href="./subject.html";
+			});
+			//查询结果
+			$(".btn-res").click(function() {
+				window.location.href = "result.html";
+			});
+
+			//微信分享
+			var shareParam={
+				url:guessUrl+'/active/act/dailyGuess/index.html',
+				title :'欧洲杯 每日猜猜猜，答题享好礼',
+				desc :'有竞猜，更精彩！',
+		        imgUrl : guessUrl+'/active/act/dailyGuess/img/wx_icon.jpg'
+			}
+			WxUtil.share("",shareParam);
+		})(Zepto);
+	</script>
+	</body>
+</html>

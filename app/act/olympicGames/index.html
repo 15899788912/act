@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	@@include('../../template/head.html')
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="@@ROOT/act/olympicGames/index.css">
+</head>
+<body>
+<!-- 首页内容NEW -->
+<div class="img_bg">
+	<img src="@@ROOT/act/olympicGames/img/bg.jpg" alt="" />
+	<div class="contain">
+
+	<!-- 活动时间 -->
+		<p class="ac_time">
+			<span>活动时间：</span>
+			<span>
+				<b class="ac_start"></b>-<b class="ac_over"></b>
+			</span>
+		</p>
+	<!-- 答题入口 -->
+		<div class="answerPoint">
+			<div class="startTxt">
+				<span>答题开始</span>
+				<span><img src="@@ROOT/act/olympicGames/img/start.png" alt="" /></span>
+			</div>
+			<div class="handBtn"><img src="@@ROOT/act/olympicGames/img/hand.png" alt="" /></div>
+		</div>
+		<div class="dialog">活动已过期</div>
+	<!-- 活动规则 -->
+		<div class="ac_info">
+			<div class="ac_rule">
+				<h3 class="ac_title">活动规则</h3>
+				<p>1.用户可在我们设定的奥运会不同阶段参与“里约猜猜猜——有奖看奥运”答题活动。</p>
+				<p>2.用户根据自己的预测进行答题，并答满每期6道题。</p>
+				<p>3.答题选择完毕后需提交，并填写正确的姓名及手机号，否则无效。</p>
+				<p>4.用户必须在提交后进行分享，获奖时凭分享截图核对中奖信息。</p>
+				<div class="line_box"></div>
+			</div>
+			<div class="reward_rule">
+				<h3 class="reward_title">奖励规则</h3>
+				<p>1.每期竞猜抽取10名准确率最高的用户得到优胜奖 ，赠送里约奥运会官方吉祥物维尼修斯一个。</p>
+				<img src="@@ROOT/act/olympicGames/img/mascots.png" alt="" />
+				<p>2.若出现竞猜正确率相同情况，本平台将依据公平公正原则进行随机抽取。</p>
+			</div>
+			<div class="reward_notice">
+				<h3 class="reward_title">领奖须知</h3>
+				<p>1.在领奖时需向一比分客服（微信号：hhly13322）发送分享截图并验证手机号。</p>
+				<p>2.获奖名单我们将于三个工作日内在一比分官网、一比分微信公众号、一比分APP进行公布。</p>
+				<div class="code_img">
+					<dl class="">
+						<dt><img src="@@ROOT/act/olympicGames/img/wx_code.png" alt="" /></dt>
+						<dd>一比分公众号live13322</dd>
+					</dl>
+					<dl class="">
+						<dt><img src="@@ROOT/act/olympicGames/img/app_code.png" alt="" /></dt>
+						<dd>一比分App下载</dd>
+					</dl>
+				</div>
+			</div>
+			<p class="footer">本活动最终解释权归一比分所有，如有舞弊行为一律作废。</p>
+		</div>
+	</div>
+</div>
+
+	@@include('../../template/foot.html')
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+		(function(){
+			var gu_urlObj={
+				"desktop":"http://192.168.10.242:8181",
+			    "development": "http://m.1332255.com",
+			    "production": "http://m.13322.com"
+			}
+			var guessUrl=gu_urlObj["production"];
+
+			function isEmptyObject(e) {
+		    var t;
+		    for (t in e)
+		        return !1;
+		    return !0
+			}
+			//sessionStorage中增加对象
+			function putSessionStorage(key, value) {
+				sessionStorage.setItem(key, value);
+			}
+			var startDate,overDate,activityEndtime,activityEndtime,activeInfo;
+		$.ajax({
+			type: 'POST',
+			url:guessUrl+'/mlottery/core/activity.findActivityQuestion.do?code=A2016080001',
+			dataType: 'json',
+			beforeSend: function() {
+				$("#J_Mask").show();
+			},
+			success: function(data, status, xhr) {
+				if(isEmptyObject(data.data)){
+					$('.no_found').show();
+				}
+				else
+				{
+					activeInfo=data.data.list;
+					var activityId;//主活动id
+
+					activityStarttime = activeInfo[0].startTime;
+					activityEndtime = activeInfo[0].endTime;
+
+					startDate = new Date(activityStarttime),
+					overDate = new Date(activityEndtime);
+					$('.ac_start').html(startDate.getMonth()+1+'月'+startDate.getDate()+'日');
+					$('.ac_over').html(overDate.getMonth()+1+'月'+overDate.getDate()+'日');
+					$('title').html(activeInfo[0].name);
+
+					putSessionStorage("activityId",activeInfo[0].id);
+
+					if(!activeInfo[0].activityList.length==0){
+						var nextActive=activeInfo[0].activityList[0];// 子活动返回值
+						putSessionStorage("activeId",nextActive.id);//id
+						putSessionStorage("activeName",nextActive.name);//名称
+						putSessionStorage("activeStarttime",nextActive.startTime);//子活动开始时间
+						putSessionStorage("activeEndtime",nextActive.endTime);//子活动结束时间
+						putSessionStorage("ans_starttime",nextActive.answerStartTime);//答题开始时间
+						putSessionStorage("ans_endtime",nextActive.answerEndTime);//答题结束时间
+						putSessionStorage("sign",nextActive.sign);//标识
+					}
+				}
+
+			},
+				complete: function() {
+						$("#J_Mask").hide();
+					} //隐藏loading
+			});
+
+			// 开始答题
+			$(".answerPoint").on("click",function(event) {
+				var currTime = Date.parse(new Date()); //当前时间
+				if(!activityEndtime<currTime){
+					if(activeInfo[0].activityList.length==0)
+					{
+						$(".dialog").html('暂无竞猜题目');
+						$('.handBtn').css("-webkit-animation-play-state","paused");
+						$(".dialog").show();
+						setTimeout(function(){
+							$(".dialog").hide();
+						}, 1500);
+						return false;
+					}
+					window.location.href="./subject.html";
+					return false;
+				}
+				$('.handBtn').css("-webkit-animation-play-state","paused");
+				$(".dialog").show();
+				setTimeout(function(){
+					$(".dialog").hide();
+				}, 1500);
+
+			});
+			//微信分享
+			var shareParam={
+				url:guessUrl+'/active/act/olympicGames/index.html',
+				title :'争当奥运预言帝，有竞猜更精彩！',
+				desc :'争当奥运预言帝，有竞猜更精彩！',
+		        imgUrl : guessUrl+'/active/act/olympicGames/img/wx_icon.jpg'
+			}
+			WxUtil.share("",shareParam);
+
+
+		})(Zepto);
+	</script>
+</html>

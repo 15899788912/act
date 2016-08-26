@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include('../../template/head.html')
+    <title>我的最佳阵容</title>
+    <link rel="stylesheet" type="text/css" href="@@ROOT/act/dreamteam/index.css">
+    <script type="text/javascript" src="../../common/util.js"></script>
+    <script src="@@ROOT/act/dreamteam/js/stateman.js"></script>
+    <script src="@@ROOT/act/dreamteam/js/underscore-min.js"></script>
+</head>
+
+<body>
+    <div id="app" style="width:100%;height:100%;position:relative;overflow-y:scroll">
+
+    </div>
+    <!-- 首页-->
+    <script type="text/template" id="index">
+        <div class="index">
+            <div class="qiu" style="">
+                <a href="#/select" class="dot">
+                    <div class="xu"> <img src="@@ROOT/act/dreamteam/img/qiu.png" /></div>
+                </a>
+            </div>
+            <div class="pai">
+                <img src="@@ROOT/act/dreamteam/img/db.png" />
+            </div>
+        </div>
+    </script>
+    <!--球队-->
+    <script type="text/template" id="team">
+        <div class="team">
+            <header class="hhly-header">
+                <div class="hhly-header-left" style="color:white;font-size:.51rem;">
+                    <a href="#/select" id="teamback">
+                        <</a>
+                </div>
+                <div class="hhly-header-center">
+                    选择球队
+                    <div class="line"></div>
+                </div>
+                <div class="hhly-header-right">
+                </div>
+            </header>
+            <!--<div class="header">-->
+            <!--<div class="title">-->
+            <!--<span></span>-->
+            <!--<div class="line"></div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="content">
+                <!-- [{"groupname":"A组","name":"法国","teamid":1},{"groupname":"A组","name":"罗马尼亚","teamid":2},{"groupname":"A组","name":"阿尔巴尼亚","teamid":3},{"groupname":"A组","name":"瑞士","teamid":4},
+                    {"groupname":"B组","name":"英格兰","teamid":5},{"groupname":"B组","name":"俄罗斯","teamid":6},{"groupname":"B组","name":"威尔士","teamid":7},{"groupname":"B组","name":"斯洛伐克","teamid":8},
+                    {"groupname":"C组","name":"德国","teamid":9},{"groupname":"C组","name":"乌克兰","teamid":10},{"groupname":"C组","name":"波兰","teamid":11},{"groupname":"C组","name":"北爱尔兰","teamid":12},
+                    {"groupname":"D组","name":"西班牙","teamid":13},{"groupname":"D组","name":"捷克","teamid":14},{"groupname":"D组","name":"土耳其","teamid":15},{"groupname":"D组","name":"克罗地亚","teamid":16},
+                    {"groupname":"E组","name":"比利时","teamid":17},{"groupname":"E组","name":"意大利","teamid":18},{"groupname":"E组","name":"爱尔兰","teamid":19},
+                    {"groupname":"E组","name":"瑞典","teamid":20},{"groupname":"F组","name":"葡萄牙","teamid":21},{"groupname":"F组","name":"冰岛","teamid":22},{"groupname":"F组","name":"奥地利","teamid":23},{"groupname":"F组","name":"匈牙利","teamid":24}]}-->
+                <div class="row">
+                    <a class="col" id="t24" href="#/member/24">
+                        <div class="team-icon">
+                            <div class="icon-xyl"></div>
+                        </div>
+                        <span>匈牙利</span>
+                    </a>
+                    <a class="col" id="t5" href="#/member/5">
+                        <div class="team-icon">
+                            <div class="icon-egl"></div>
+                        </div>
+                        <span>英格兰</span>
+                    </a>
+                    <a class="col" id="t2" href="#/member/2">
+                        <div class="team-icon">
+                            <div class="icon-lmny"></div>
+                        </div>
+                        <span>罗马尼亚</span>
+                    </a>
+                    <a class="col" id="t19" href="#/member/19">
+                        <div class="team-icon">
+                            <div class="icon-ael"></div>
+                        </div>
+                        <span>爱尔兰</span>
+                    </a>
+                </div>
+                <div class="row">
+                    <a class="col" id="t7" href="#/member/7">
+                        <div class="team-icon">
+                            <div class="icon-wes"></div>
+                        </div>
+                        <span>威尔士</span>
+                    </a>
+                    <a class="col" id="t15" href="#/member/15">
+                        <div class="team-icon">
+                            <div class="icon-teq"></div>
+                        </div>
+                        <span>土耳其</span>
+                    </a>
+                    <a class="col" id="t4" href="#/member/4">
+                        <div class="team-icon">
+                            <div class="icon-rs"></div>
+                        </div>
+                        <span>瑞士</span>
+                    </a>
+                    <a class="col" id="t16" href="#/member/16">
+                        <div class="team-icon">
+                            <div class="icon-kldy"></div>
+                        </div>
+                        <span>克罗地亚</span>
+                    </a>
+                </div>
+                <div class="row">
+                    <a class="col" id="t13" href="#/member/13">
+                        <div class="team-icon">
+                            <div class="icon-xby"></div>
+                        </div>
+                        <span>西班牙</span>
+                    </a>
+                    <a class="col" id="t20" href="#/member/20">
+                        <div class="team-icon">
+                            <div class="icon-rd"></div>
+                        </div>
+                        <span>瑞典</span>
+                    </a>
+                    <a class="col" id="t22" href="#/member/22">
+                        <div class="team-icon">
+                            <div class="icon-bd"></div>
+                        </div>
+                        <span>冰岛</span>
+                    </a>
+                    <a class="col" id="t17" href="#/member/17">
+                        <div class="team-icon">
+                            <div class="icon-bls"></div>
+                        </div>
+                        <span>比利时</span>
+                    </a>
+                </div>
+                <div class="row">
+                    <a class="col" id="t6" href="#/member/6">
+                        <div class="team-icon">
+                            <div class="icon-els"></div>
+                        </div>
+                        <span>俄罗斯</span>
+                    </a>
+                    <a class="col" id="t1" href="#/member/1">
+                        <div class="team-icon">
+
+                            <div class="icon-fg"></div>
+                        </div>
+                        <span>法国</span>
+                    </a>
+                    <a class="col" id="t23" href="#/member/23">
+                        <div class="team-icon">
+
+                            <div class="icon-adl"></div>
+                        </div>
+                        <span>奥地利</span>
+                    </a>
+                    <a class="col" id="t10" href="#/member/10">
+                        <div class="team-icon">
+                            <div class="icon-wkl"></div>
+                        </div>
+                        <span>乌克兰</span>
+                    </a>
+                </div>
+                <div class="row">
+                    <a class="col" id="t18" href="#/member/18">
+                        <div class="team-icon">
+                            <div class="icon-ydl"></div>
+                        </div>
+                        <span>意大利</span>
+                    </a>
+                    <a class="col" id="t8" href="#/member/8">
+                        <div class="team-icon">
+                            <div class="icon-slfk"></div>
+                        </div>
+                        <span>斯洛伐克</span>
+                    </a>
+                    <a class="col" id="t12" href="#/member/12">
+                        <div class="team-icon">
+                            <div class="icon-bael"></div>
+                        </div>
+                        <span>北爱尔兰</span>
+                    </a>
+                    <a class="col" id="t3" href="#/member/3">
+                        <div class="team-icon">
+                            <div class="icon-aebny"></div>
+                        </div>
+                        <span>阿尔巴尼亚</span>
+                    </a>
+                </div>
+                <div class="row">
+                    <a class="col" id="t14" href="#/member/14">
+                        <div class="team-icon">
+                            <div class="icon-jk"></div>
+                        </div>
+                        <span>捷克</span>
+                    </a>
+                    <a class="col" id="t11" href="#/member/11">
+                        <div class="team-icon">
+                            <div class="icon-bolan"></div>
+                        </div>
+                        <span>波兰</span>
+                    </a>
+                    <a class="col" id="t21" href="#/member/21">
+                        <div class="team-icon">
+                            <div class="icon-pty"></div>
+                        </div>
+                        <span>葡萄牙</span>
+                    </a>
+                    <a class="col" id="t9" href="#/member/9">
+                        <div class="team-icon">
+                            <div class="icon-dg"></div>
+                        </div>
+                        <span>德国</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- 球员-->
+    <script type="text/template" id="member">
+
+        <div class="tip hide">
+            <div class="mask"></div>
+            <div class="tips">
+                已选择过该球员...
+            </div>
+        </div>
+        <div class="member ">
+            <header class="hhly-header">
+                <div class="hhly-header-left" style="color:white;font-size:.51rem;">
+                    <a href="#/team">
+                        <</a>
+                </div>
+                <div class="hhly-header-center">
+                    点击选择球员
+                </div>
+                <div class="hhly-header-right">
+                    <!--<img src="/act/dreamteam/img/gq.png" id="gjqz" class=""/>-->
+                    <div class="icon-qels" id="guoqi"></div>
+                    <span id="guojia">俄罗斯</span>
+                </div>
+            </header>
+            <div class="content">
+                <div class="row">
+                    <div class="left">
+                        门将
+                    </div>
+                    <div class="right" id="goalkeeper">
+                        <!--<a class="item col5">-->
+                        <!--<div class="mj">-->
+                        <!--&lt;!&ndash;<div class="tou"></div>&ndash;&gt;-->
+                        <!--<img src="/act/dreamteam/img/tou.png" class="tou"/>-->
+                        <!--<img src="/act/dreamteam/img/man.png" class="shen"/>-->
+                        <!--</div>-->
+                        <!--<span>特尔事特根</span>-->
+                        <!--</a>-->
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+                <div class="line"></div>
+                <div class="row">
+                    <div class="left">
+                        后卫
+                    </div>
+                    <div class="right" id="back">
+                        <!--<a class="item col5">-->
+                        <!--<div class="mj">-->
+                        <!--<div class="tou"></div>-->
+                        <!--<div class="shen"></div>-->
+                        <!--</div>-->
+                        <!--<span>特尔事特根</span>-->
+                        <!--</a>-->
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+                <div class="line"></div>
+                <div class="row">
+                    <div class="left">
+                        中场
+                    </div>
+                    <div class="right" id="midfield">
+                        <!--<a class="item col5">-->
+                        <!--<div class="mj">-->
+                        <!--<div class="tou"></div>-->
+                        <!--<div class="shen"></div>-->
+                        <!--</div>-->
+                        <!--<span>莱诺</span>-->
+                        <!--</a>-->
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+                <div class="line"></div>
+                <div class="row">
+                    <div class="left">
+                        前锋
+                    </div>
+                    <div class="right" id="forward">
+                        <!--<a class="item col5">-->
+                        <!--<div class="mj">-->
+                        <!--<div class="tou"></div>-->
+                        <!--<div class="shen"></div>-->
+                        <!--</div>-->
+                        <!--<span>莱诺</span>-->
+                        <!--</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </script>
+    <!-- 球员模板-->
+    <script type="text/template" id="team-member">
+        <a class="item col5">
+                <div class="<%=cls%>">
+                    <img src="<%=tou%>" class="tou"/>
+                    <div  class="<%=shen%>"></div>
+                </div>
+            </a>
+    </script>
+    <script type="text/template" id="team-member2">
+        <a class="item col5">
+            <div class="mj">
+                <img src="<%=tou%>" class="qiuyuan" />
+            </div>
+        </a>
+    </script>
+
+    <!--分享-->
+    <script type="text/template" id="share">
+
+        <div class="back page" style="">
+            <img src="@@ROOT/act/dreamteam/img/hua.png" class="hua" />
+            <div class="tan">
+                <ul style="font-size: 12px;padding-top: 15px;">
+                    <li class="tanA">你是新一代绿茵大师</li>
+                    <li class="tanB">战斗力
+                    </li>
+                    <li class="zhandou">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="maskno gf"></div>
+            <div class="zhe gf">
+                <img src="@@ROOT/act/dreamteam/img/zhe.png" style="width:6.40rem;height:7.66rem;" />
+            </div>
+            <div class="header gf">
+                <div class="title">
+                    <span><span id="nickname">我</span>的最佳阵容</span>
+                    <div class="line2"></div>
+                </div>
+                <div class="title flex-center">
+
+                    <ul class="master" width="100%">
+                        <li class="m" id="masterA" width="50%"></li>&nbsp;
+                        <li class="s" id="masterB"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="body gf">
+                <!-- man -->
+                <div class="item mj" id="mj">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+
+                <div class="item hw1" id="back1">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item  hw2" id="p2">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw3" id="p3">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw4" id="p4">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+
+                <div class="clear" style="clear:both"></div>
+                <div class="item hw5" id="p5">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw6" id="p6">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw7" id="p7">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw8" id="p8">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="clear" style="clear:both"></div>
+                <div class="item hw9" id="p9">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw10" id="p10">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+            </div>
+            <div class="footer">
+                <div class="opt">
+                    <button class="btn show" id="selectbutton">重新挑选球员</button>
+                </div>
+            </div>
+        </div>
+
+    </script>
+
+    <!-- 分享后的页面-->
+
+    <script type="text/template" id="new_share">
+        <div class="back page" style="">
+
+            <div class="header gf">
+                <div class="title">
+                    <span>我的最佳阵容</span>
+                    <div class="line2"></div>
+                </div>
+                <div class="title flex-center">
+
+                    <ul class="master" width="100%">
+                        <li class="m" id="masterA" width="50%"></li>&nbsp;
+                        <li class="s" id="masterB"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="body">
+                <!-- man -->
+                <div class="item mj" id="mj">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+
+                <div class="item hw1" id="back1">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item  hw2" id="p2">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw3" id="p3">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw4" id="p4">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+
+                <div class="clear" style="clear:both"></div>
+                <div class="item hw5" id="p5">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw6" id="p6">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw7" id="p7">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw8" id="p8">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="clear" style="clear:both"></div>
+                <div class="item hw9" id="p9">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw10" id="p10">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+            </div>
+            <div class="footer">
+                <div class="opt">
+                    <button class="btn show" id="selectbutton">选择我的最佳阵容</button>
+                </div>
+            </div>
+        </div>
+
+    </script>
+    <!-- 选择球员-->
+    <script type="text/template" id="select">
+
+        <div class="zhe2 hide"></div>
+        <div class="select  page" style="">
+            <div class="panel hide animate-r2l">
+                <a class="exit">
+                    <img src="@@ROOT/act/dreamteam/img/exit.png" />
+                </a>
+                <div class="title">玩法规则</div>
+                <p>
+                    从24支球队中选出你心目中的欧洲杯最佳阵容,
+                    <br/> 最终与欧足协官方公布的最佳十一人
+                    <br/> 一致或人气最高,匹配度最高,将获得一比分
+                    <br> 官方赠送的大奖礼包一份
+                    <br/>
+                </p>
+            </div>
+            <div class="header">
+                <div class="title">
+                </div>
+            </div>
+            <div class="body">
+                <!-- man -->
+                <div class="item mj" id="mj">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+
+                <div class="item hw1" id="back1">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item  hw2" id="p2">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw3" id="p3">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw4" id="p4">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+
+                <div class="clear" style="clear:both"></div>
+                <div class="item hw5" id="p5">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw6" id="p6">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw7" id="p7">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw8" id="p8">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="clear" style="clear:both"></div>
+                <div class="item hw9" id="p9">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+                <div class="item hw10" id="p10">
+                    <img src="@@ROOT/act/dreamteam/img/default1.png" style="width:.77rem;height:1.48rem" />
+                </div>
+            </div>
+            <div class="footer">
+                <div class="opt">
+                    <div class="tip show">点击任意头像选择球员</div>
+                    <!--<button class="btn hide" id="sharebutton">分享我的最佳阵容到朋友圈</button>-->
+                </div>
+            </div>
+        </div>
+
+    </script>
+    <script type="text/template" id="tip">
+        <div class="tip">
+            <div class="mask"></div>
+            <div class="tips">
+                已选择过该球员...
+            </div>
+        </div>
+    </script>
+
+    <!-- 关注-->
+    <script type="text/template" id="focus">
+        <div class="foc_contain">
+            <img src="@@ROOT/act/dreamteam/img/gz_bg.jpg">
+            <div class="btn_focus" id="gu_focus" style="display:none;">关 注</div>
+            <div class="surprised" id="gu_jx">扫 码 有 惊 喜！</div>
+        </div>
+    </script>
+    @@include('../../template/foot.html')
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript">
+        var urlObj = {
+            "test": "http://192.168.10.242:8181",
+            "production": "http://m.13322.com",
+            "development": "http://m.1332255.com"
+        }
+
+        var now = new Date();
+        var id = now.getFullYear() + "" + now.getMonth() + "" + now.getDate() + "" + now.getHours() + "" + now.getMinutes() + "" + now.getSeconds() + "" + now.getMilliseconds();
+        shares("first"); // 未选择球员也要显示分享小图标.
+        //全局变量，保持阵容等.
+        var isAlert = false;
+        var reshare = false; //是否是分享的页面.
+        var first = true;
+        var isAll = 0;
+        var zhenrong = [];
+
+
+        var randomid = genRandom(0, 4);
+        //console.log("randomid",randomid);
+        //            $(".panel .exit").bind("click",function(e){
+        //                $(".panel").removeClass("show").addClass("hide");
+        ////                $(".zhe2").removeClass("show").addClass("hide");
+        //                first = false;
+        //            });
+        //            if(first){
+        //                $(".panel").removeClass("hide").addClass("show");
+        ////                $(".zhe2").removeClass("hide").addClass("show");
+        //            }
+        //数据service.
+        var dataService = {};
+        dataService.url = {
+            save: urlObj["production"] + "/mlottery/core/activity.addBestTeam.do", //http://192.168.10.242:8181
+            get: urlObj["production"] + "/mlottery/core/activity.findBestTeam.do"
+        }
+        dataService.getData = function(activityUserId) {
+            $.ajax({
+                url: dataService.url.get,
+                data: {
+                    activityId: 10001,
+                    activityUserId: activityUserId
+                },
+                cache: true,
+                type: "get",
+                success: function(data) {
+                    //                        zhenrong = data.data.resultData;
+                    var result = JSON.parse(data.data.resultData);
+                    nickName = result.nickName;
+                    var list = result.data || [];
+                    $("#nickname").html(nickName);
+                    //大师随机
+                    var master = [{
+                        5: "瓜迪奥拉"
+                    }, {
+                        "穆里尼奥": 5
+                    }, {
+                        "西蒙尼": 4
+                    }, {
+                        "弗格森": 4
+                    }, {
+                        "恩里克": 4
+                    }, {
+                        "安切洛蒂": 3
+                    }, {
+                        "里皮": 3
+                    }, {
+                        "温格": 2
+                    }, {
+                        "齐达内": 2
+                    }, {
+                        "高洪波": 1
+                    }];
+                    var key5 = ["瓜迪奥拉", "穆里尼奥"];
+                    var key4 = ["西蒙尼", "弗格森", "恩里克"];
+                    var key3 = ["安切洛蒂", "里皮"];
+                    var key2 = ["温格", "齐达内"];
+                    var key1 = "高洪波";
+                    var master_sum = ["中国足球靠你了", "你还只是个菜鸟教练", "你的战术初露锋芒", "你已具备大师风范", "你是新一代绿茵场大师"];
+
+
+                    var randid = result.amount || genRandom(0, 4);
+                    if (randid === undefined || randid === null) {
+                        randid = genRandom(0, 4);
+                    }
+                    var master_text = master_sum[randid];
+                    var master_name = "";
+                    if (randid === 4) {
+                        var nowid = genRandom(0, 1);
+                        //console.log(nowid);
+                        master_name = key5[nowid];
+                    } else if (randid === 3) {
+                        var nowid = genRandom(0, 2);
+                        //console.log(nowid);
+                        master_name = key4[nowid];
+                    } else if (randid === 2) {
+                        var nowid = genRandom(0, 1);
+                        //console.log(nowid);
+                        master_name = key3[nowid];
+                    } else if (randid === 1) {
+                        var nowid = genRandom(0, 1);
+                        //console.log(nowid);
+                        master_name = key2[nowid];
+                    } else {
+                        master_name = key1;
+                    }
+                    var domstar = "<div>战斗力:</div>";
+                    for (var i = 0; i <= randid; i++) {
+                        domstar += "<div class='star'></div>";
+                    }
+                    for (var i = 0; i < 4 - randid; i++) {
+                        domstar += "<div style='width:.28rem;'></div>";
+                    }
+                    //console.log(master_text+":"+master_name, domstar);
+                    //console.log($("#masterA"),$("#masterB"));
+                    $("#masterA").html(master_text + ":" + master_name);
+                    $("#masterB").html(domstar);
+
+                    isAll = renderMember(list, isAll);
+                },
+                error: function(err) {
+                    //console.log("fail",err);
+                }
+            })
+        }
+        dataService.saveData = function(id, data, type) {
+            $.ajax({
+                url: dataService.url.save,
+                data: {
+                    activityId: 10001,
+                    activityUserId: id,
+                    resultData: "" + JSON.stringify(data)
+                },
+                type: "post",
+                success: function(data) {
+                    if (type === "first") {} else {
+
+                    }
+                },
+                error: function(err) {
+                    if (type === "first") {} else {
+                        alert("阵容保存没有成功");
+                    }
+                }
+            })
+        }
+
+        /** 微信sdk ,這裡的微信返回地址和我們的stateman地址會有衝突.**/
+        var weixin = {};
+        var openid = "";
+        var isshare = window.location.search.indexOf("id=") >= 0 ? true : false;
+        var nickName = "";
+        if (isshare) {
+            var openid = window.location.search.substr(window.location.search.indexOf("id=") + 3, window.location.search.length - 1); // hash is restore location.hash;
+            reshare = true;
+            dataService.getData(openid)
+        } else {
+
+        }
+        /**初始化页面传递的变量**/
+        var select = [];
+        var teamMap = {
+            "1": "@@ROOT/act/dreamteam/img/man.png", //德国球队id : 德国队服.
+            "2": "",
+        }
+        var qiuyiMap = {
+            "1": "icon-q-faguo",
+            "2": "icon-q-lmny",
+            "3": "",
+            "6": "icon-q-els",
+            "11": "icon-q-bolan",
+            "17": "icon-q-bls",
+            "19": "icon-q-ael"
+
+        }
+        var gjMap = {
+            "1": ["icon-qfg", "法国"],
+            "2": ["icon-qlmny", "罗马尼亚"],
+            "3": ["icon-qaebny", "阿尔巴尼亚"],
+            "4": ["icon-qrs", "瑞士"],
+            "5": ["icon-qygl", "英格兰"],
+            "6": ["icon-qels", "俄罗斯"],
+            "7": ["icon-qwes", "威尔士"],
+            "8": ["icon-qslfk", "斯洛伐克"],
+            "9": ["icon-qdg", "德国"],
+            "10": ["icon-qwkl", "乌克兰"],
+            "11": ["icon-qbolan", "波兰"],
+            "12": ["icon-qbael", "北爱尔兰"],
+            "13": ["icon-qxby", "西班牙"],
+            "14": ["icon-qjk", "捷克"],
+            "15": ["icon-qteq", "土耳其"],
+            "16": ["icon-qkldy", "克罗地亚"],
+            "17": ["icon-qbls", "比利时"],
+            "18": ["icon-qydl", "意大利"],
+            "19": ["icon-qael", "爱尔兰"],
+            "20": ["icon-qrd", "瑞典"],
+            "21": ["icon-qpty", "葡萄牙"],
+            "22": ["icon-qbd", "冰岛"],
+            "23": ["icon-qadl", "奥地利"],
+            "24": ["icon-qxyl", "匈牙利"]
+        }
+        var state = {
+                "focus": {
+                    enter: function() {
+                        $("#app").html($("#focus").html());
+                    }
+                },
+                "index": {
+                    enter: function() {
+                        $("#app").html($("#index").html());
+                        $(".index").bind("touchend", function() {
+                            stateman.go("select");
+                        })
+                    }
+                },
+                "select": {
+                    enter: function() {
+                        //console.log("selects",isAlert);
+                        $("#app").html($("#select").html());
+                        if (!isAlert) {
+                            $(".select .panel").removeClass("hide").addClass("show");
+                            $(".zhe2").removeClass("hide").addClass("show");
+                            isAlert = true;
+                        }
+                        var isAll = 0; //局部变量...
+                        isAll = renderMember(zhenrong, isAll);
+                        if (isAll === 11) {
+                            $(".select .tip").removeClass("show").addClass("hide");
+                            //                            $("#sharebutton").removeClass("hide").addClass("show");
+                            $(".item").unbind("click");
+                            window.localStorage.setItem("zhenrong", JSON.stringify(zhenrong));
+                            stateman.go("share");
+                        }
+                        $(".panel .exit").bind("click", function() {
+                            //console.log("panel exit");
+                            $(".select .panel").removeClass("show").addClass("hide");
+                            $(".zhe2").removeClass("show").addClass("hide");
+                            isAlert = true;
+                        })
+                        $(".item").bind("click", function(e) {
+                            //console.log(".item click");
+                            var position = $(this).attr("id");
+                            window.localStorage.setItem("currentSelectPosition", position);
+                            event.stopPropagation();
+                            stateman.go("team");
+                        })
+                        $("#sharebutton").bind("click", function(e) {
+                            window.localStorage.setItem("zhenrong", JSON.stringify(zhenrong));
+                            stateman.go("share");
+                        })
+                    },
+                    leave: function() {
+                        //console.log("select leave");
+                        $(".item").unbind("click");
+                        $(".item").off();
+                        console.log("item undbind click event");
+                    }
+                },
+                "home": {
+                    enter: function() {
+                        //console.log("enter: "+this.name);
+                        document.getElementById("app").innerHTML = document.getElementById("index").innerHTML;
+                    },
+                    leave: function() {
+                        //console.log("leave : " + this.name);
+                    }
+                },
+                "team": {
+                    enter: function() {
+                        $("#app").html($("#team").html());
+                    },
+                    leave: function() {
+                        //console.log("leave : " + this.name);
+                    }
+                },
+                "member": {
+                    url: "member/:id(\\d+)",
+                    enter: function() {
+                        //console.log("leave : " + this.name);
+                        document.getElementById("app").innerHTML = document.getElementById("member").innerHTML;
+                        var team = window.localStorage.getItem("team");
+                        var teamid = stateman.current.param.id;
+                        //console.log(teamid,gjMap[teamid]);
+                        var className = $("#guoqi").attr("class");
+                        $("#guoqi").removeClass(className).addClass(gjMap[teamid][0]);
+                        $("#guojia").html(gjMap[teamid][1]);
+                        $.getJSON(
+                            urlObj["production"] + '/mlottery/core/info.findAppEuropeanPlayer.do', {
+                                teamid: teamid
+                            },
+                            function(result) {
+                                var list = result.infos || [];
+                                var template_html = $("#team-member2").html();
+                                var team_template = _.template(template_html);
+                                var shen = ""; //deprecated.......
+                                //console.log(team_template);
+                                var back = "";
+                                var forward = "";
+                                var midfield = "";
+                                var goalkeeper = "";
+                                for (var i = 0; i < list.length; i++) {
+                                    //for 后卫.
+                                    var item = list[i];
+                                    var position = item.positional;
+                                    if (position === "后卫") {
+                                        var temp = team_template({
+                                            cls: "mj",
+                                            name: item.name,
+                                            tou: item.iMAGE,
+                                            shen: shen
+                                        });
+                                        back += temp;
+                                    }
+                                    //for 前锋.
+                                    if (position === "前锋") {
+                                        var temp = team_template({
+                                            cls: "mj",
+                                            name: item.name,
+                                            tou: item.iMAGE,
+                                            shen: shen
+                                        });
+                                        forward += temp;
+                                    }
+                                    //for 门将.
+                                    if (position === "门将") {
+                                        var temp = team_template({
+                                            cls: "mj",
+                                            name: item.name,
+                                            tou: item.iMAGE,
+                                            shen: shen
+                                        });
+                                        goalkeeper += temp;
+                                    }
+                                    //for 中场.
+                                    if (position === "中场") {
+                                        var temp = team_template({
+                                            cls: "mj",
+                                            name: item.name,
+                                            tou: item.iMAGE,
+                                            shen: shen
+                                        });
+                                        midfield += temp;
+                                    }
+                                }
+                                $("#back").html(back);
+                                $("#forward").html(forward);
+                                $("#goalkeeper").html(goalkeeper);
+                                $("#midfield").html(midfield);
+                                //事件...
+                                $("a.item").bind("click", function(e) {
+                                    //console.log("a.item click",e);
+                                    var tou = $(this).find("img").attr("src");
+                                    var name = $(this).find("span").html();
+                                    //console.log(zhenrong,tou);
+                                    //console.log(zhenrong.length);
+                                    var isExits = checkExist(zhenrong, tou);
+                                    if (isExits) {
+                                        //console.log("已选择?",isExits);
+                                        $(".tip").removeClass("hide").addClass("show");
+                                    } else {
+                                        var currentSelectPosition = window.localStorage.getItem("currentSelectPosition");
+                                        zhenrong.push({
+                                            "key": currentSelectPosition,
+                                            "value": tou,
+                                            "shen": shen,
+                                            "name": name
+                                        });
+                                        //console.log("stateman.go()");
+                                        stateman.go("select");
+                                    }
+                                    window.setTimeout(function() {
+                                        $(".tip").removeClass("show").addClass("hide");
+                                    }, 2000);
+                                })
+                                $(".tip .mask").bind("click", function() {
+                                    $(".tip").removeClass("show").addClass("hide");
+                                })
+
+                            }
+                        );
+                    },
+                    leave: function() {
+                        //console.log("leave : " + this.name);
+                    }
+                },
+                "newShare": {
+                    enter: function() {
+                        $("#app").html($("#new_share").html());
+                        var openid = window.location.search.substr(window.location.search.indexOf("id=") + 3, window.location.search.indexOf("&") - 4); // hash is restore location.hash;
+                        //                        //console.log(openid);
+                        reshare = true;
+                        dataService.getData(openid);
+                        $("#selectbutton").bind("click", function() {
+                            stateman.go("select");
+                        })
+                    }
+                },
+                "share": {
+                    enter: function() {
+                        $("#app").html($("#share").html());
+                        $(".maskno").addClass("show");
+                        $("#app .item").unbind("click");
+                        console.log("item unbind click");
+
+                        $("#selectbutton").bind("click", function() {
+                                zhenrong = [];
+                                stateman.go("select");
+                            })
+                            //大师随机
+                        var master = [{
+                            5: "瓜迪奥拉"
+                        }, {
+                            "穆里尼奥": 5
+                        }, {
+                            "西蒙尼": 4
+                        }, {
+                            "弗格森": 4
+                        }, {
+                            "恩里克": 4
+                        }, {
+                            "安切洛蒂": 3
+                        }, {
+                            "里皮": 3
+                        }, {
+                            "温格": 2
+                        }, {
+                            "齐达内": 2
+                        }, {
+                            "高洪波": 1
+                        }];
+                        var key5 = ["瓜迪奥拉", "穆里尼奥"];
+                        var key4 = ["西蒙尼", "弗格森", "恩里克"];
+                        var key3 = ["安切洛蒂", "里皮"];
+                        var key2 = ["温格", "齐达内"];
+                        var key1 = "高洪波";
+                        var master_sum = ["中国足球靠你了", "你还只是个菜鸟教练", "你的战术初露锋芒", "你已具备大师风范", "你是新一代绿茵场大师"];
+
+                        var master_text = master_sum[randomid];
+                        var master_name = "";
+                        if (randomid === 4) {
+                            var nowid = genRandom(0, 1);
+                            //console.log(nowid);
+                            master_name = key5[nowid];
+                        } else if (randomid === 3) {
+                            var nowid = genRandom(0, 2);
+                            //console.log(nowid);
+                            master_name = key4[nowid];
+                        } else if (randomid === 2) {
+                            var nowid = genRandom(0, 1);
+                            //console.log(nowid);
+                            master_name = key3[nowid];
+                        } else if (randomid === 1) {
+                            var nowid = genRandom(0, 1);
+                            //console.log(nowid);
+                            master_name = key2[nowid];
+                        } else {
+                            master_name = key1;
+                        }
+                        var domstar = "<div>战斗力:</div>";
+                        var tanstar = "";
+                        for (var i = 0; i <= randomid; i++) {
+                            domstar += "<div class='star'></div>";
+                            tanstar += "<div class='star'></div>";
+                        }
+                        //                        for(var i = 0;i<4-randomid;i++){
+                        //                            domstar +="<div style='width:.28rem;'></div>";
+                        //                            tanstar +="<div style='width:.28rem;'></div>";
+                        //                        }
+                        $(".zhe").removeClass("show").addClass("hide");
+                        window.timerid = window.setTimeout(function() {
+                            $(".hua").addClass("hide");
+                            $(".tan").addClass("hide");
+                            $(".zhe").removeClass("hide").addClass("show");
+                            $("#masterA").html(master_text + ":" + master_name);
+                            $("#masterB").html(domstar);
+                            $(".gf").bind("click", function() {
+                                window.location.href = "http://mp.weixin.qq.com/s?__biz=MzA3MjE5MDE0MA==&mid=502945457&idx=1&sn=023a1ae31d2d55ecca4d6558e0d4977d#rd";
+                            })
+                        }, 5000);
+
+                        $(".tanA").html(master_text + ":" + master_name);
+                        $(".zhandou").html(tanstar);
+
+                        var isAll = 0; //局部变量...
+                        //                        zhenrong = JSON.parse(window.localStorage.getItem("zhenrong"));
+                        //console.log("zhenrong:",zhenrong);
+                        isAll = renderMember(zhenrong, isAll);
+                        //                        shareSuccess();
+                        shares();
+                    },
+                    leave: function() {
+                        //console.log("leave:",window.timerid);
+                        clearTimeout(window.timerid);
+                    }
+                }
+            }
+            /**
+             * 检查是否存在过.
+             * **/
+        function checkExist(list, key) {
+            //console.log("检查是否重复",list.length);
+            var isexist = false;
+            for (var i = 0; i < list.length; i++) {
+                var item = list[i];
+                //console.log(item,"key="+key);
+                //console.log(item.value === key);
+                if (item.value === key) {
+                    isexist = true;
+                }
+                if (isexist) {
+                    break;
+                }
+            }
+            return isexist;
+        }
+        /**
+         * @function share
+         * */
+        function shares(type) {
+            wxData = {};
+            //                        nickName = nickName ? nickName : window.localStorage.getItem("nickName");
+            wxData.title = '我的最佳阵容';
+            var sign_url = window.location.origin + window.location.pathname + window.location.search;
+            if (type === "first")
+                wxData.url = window.location.origin + window.location.pathname + "#/index";
+            else
+                wxData.url = window.location.origin + window.location.pathname + "?id=" + id + "#/newShare";
+
+            wxData.img_url = window.location.origin + "/active/act/dreamteam/img/share.jpg";
+            wxData.desc = "我的欧洲杯最佳阵容";
+            $.getJSON(
+                urlObj["production"] + '/mlottery/core/info.findWeixinConfig.do?callback=?', {
+                    url: sign_url
+                },
+                function(jssdkConfig) {
+                    //console.log(jssdkConfig);
+                    wx.config({
+                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: jssdkConfig.appId || "", // 必填，公众号的唯一标识
+                        timestamp: jssdkConfig.timestamp || "", // 必填，生成签名的时间戳
+                        nonceStr: jssdkConfig.nonceStr || "", // 必填，生成签名的随机串
+                        signature: jssdkConfig.signature || "", // 必填，签名，见附录1
+                        jsApiList: [
+                                'onMenuShareTimeline',
+                                'onMenuShareAppMessage',
+                                'onMenuShareQQ',
+                                'onMenuShareWeibo',
+                                'onMenuShareQZone'
+                            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                    });
+                    wx.error(function(res) {
+                        //console.log(res);
+                        wxData.url = window.location.origin + window.location.pathname + "#/index";
+                        // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+
+                    });
+                    wx.ready(function() {
+                        //console.log("wx.config finished");
+                        wx.onMenuShareTimeline({
+                            title: wxData.title, // 分享标题
+                            link: wxData.url, // 分享链接
+                            imgUrl: wxData.img_url, // 分享图标
+                            success: function() {
+                                // 用户确认分享后执行的回调函数
+                                shareSuccess(id, randomid, type);
+                            },
+                            cancel: function() {
+                                // 用户取消分享后执行的回调函数
+                            },
+                            fail: function(res) {
+                                //console.log("fail",res);
+                            },
+                            complete: function(res) {
+                                //console.log(" share complete",res);
+                            }
+                        });
+                        //分享给微信朋友
+                        wx.onMenuShareAppMessage({
+                            title: wxData.title, // 分享标题
+                            desc: wxData.desc, // 分享描述
+                            link: wxData.url, // 分享链接
+                            imgUrl: wxData.img_url, // 分享图标
+                            success: function() {
+                                // 用户确认分享后执行的回调函数
+                                shareSuccess(id, randomid, type);
+                            },
+                            cancel: function() {
+                                // 用户取消分享后执行的回调函数
+                            }
+                        });
+                        //分享到QQ
+                        wx.onMenuShareQQ({
+                            title: wxData.title, // 分享标题
+                            desc: wxData.desc, // 分享描述
+                            link: wxData.url, // 分享链接
+                            imgUrl: wxData.img_url, // 分享图标
+                            success: function() {
+                                // 用户确认分享后执行的回调函数
+                                shareSuccess(id, randomid, type);
+                            },
+                            cancel: function() {
+                                // 用户取消分享后执行的回调函数
+                            }
+                        });
+                        //分享到腾讯微博
+                        wx.onMenuShareWeibo({
+                            //title: wxData.title, // 分享标题
+                            desc: wxData.title + wxData.desc + wxData.url, // 分享描述
+                            //link: wxData.url, // 分享链接
+                            //imgUrl: wxData.img_url, // 分享图标
+                            success: function() {
+                                // 用户确认分享后执行的回调函数
+                                shareSuccess(id, randomid, type);
+                            },
+                            cancel: function() {
+                                // 用户取消分享后执行的回调函数
+                            }
+                        });
+                        //分享到QQ空间
+                        wx.onMenuShareQZone({
+                            title: wxData.title, // 分享标题
+                            desc: wxData.desc, // 分享描述
+                            link: wxData.url, // 分享链接
+                            imgUrl: wxData.img_url, // 分享图标
+                            success: function() {
+                                // 用户确认分享后执行的回调函数
+                                shareSuccess(id, randomid, type);
+                            },
+                            cancel: function() {
+                                // 用户取消分享后执行的回调函数
+                            }
+                        });
+                    })
+                    wx.error(function() {
+                        //                                        //console.log("i error",openid);
+                    })
+                }
+            ); // share function end....
+        }
+        /**
+         * 大师随机
+         * **/
+        function randomMaster(amount) {
+
+        }
+
+        /**
+         *用户确认分享后执行的函数.
+         * **/
+        function shareSuccess(id, randomid, type) {
+            var amount = gen5();
+            var rate = genRate();
+            //console.log(amount,rate);
+            //console.log("id:",id);
+            var data = {
+                "amount": randomid,
+                "rate": rate,
+                "data": zhenrong,
+                "nickName": nickName
+            };
+            dataService.saveData(id, data, type);
+        }
+        /**
+         * @清空分享的
+         **/
+        function clearShare() {
+            $("#mj img").attr("src", "");
+            $("#back1  img").attr("src", "");
+            $("#p2  img").attr("src", "");
+            $("#p3 img").attr("src", "");
+            $("#p4 img").attr("src", "");
+            $("#p5  img").attr("src", "");
+            $("#p6  img").attr("src", "");
+            $("#p7  img").attr("src", "");
+            $("#p8 img").attr("src", "");
+            $("#p9  img").attr("src", "");
+            $("#p10  img").attr("src", "");
+            $("#nickname").html("");
+            $(".master").removeClass("show").addClass("hide");
+            $("#selectbutton").removeClass("show").addClass("hide");
+            $("#sharebutton").removeClass("show").addClass("hide");
+            $(".tip").removeClass("hide").addClass("show");
+            isAll = 0;
+            return isAll;
+        }
+
+        /**
+         * @desp 生成随机数
+         * */
+        function genRandom(min, max) {
+            var range = max - min;
+            var random = Math.random();
+            return min + 　Math.round(random * range);
+        }
+        /**
+         * 生成6000到12000的随机战斗力.
+         * */
+        function gen5() {
+            return genRandom(1, 5);
+        }
+        // 生产随机比例.
+        function genRate() {
+            return genRandom(1, 99);
+        }
+        /**
+         * 去重数组,key为主键.是否等于11.
+         * **/
+        function uniqs(list) {
+            var cloneList = [];
+            var nums = 0;
+            for (var i = 0; i < list.length; i++) {
+                var item = list[i];
+                var key = item.key;
+                //console.log(_.indexOf(cloneList,key));
+                if (_.indexOf(cloneList, key) >= 0) {
+                    //                        break;
+                } else {
+                    cloneList.push(key);
+                    nums++;
+                }
+            }
+            return nums;
+        }
+        /**
+         * 根据数组循环的item渲染最佳阵容的头像.
+         * @param list
+         */
+        function renderMember(list, isAll) {
+            for (var i = 0; i < list.length; i++) {
+                var item = list[i];
+                var key = item.key;
+                var tou = item.value;
+                var shen = item.shen || "@@ROOT/act/dreamteam/img/man.png";
+                var names = item.name || "";
+                //console.log(item,key);
+                if (key === "mj") {
+                    $("#mj img").attr("src", tou);
+                }
+                if (key === "back1") {
+                    $("#back1  img").attr("src", tou);
+                }
+                if (key === "p2") {
+                    $("#p2  img").attr("src", tou);
+                }
+                if (key === "p3") {
+                    $("#p3 img").attr("src", tou);
+                }
+                if (key === "p4") {
+                    $("#p4 img").attr("src", tou);
+                }
+                if (key === "p5") {
+                    $("#p5  img").attr("src", tou);
+                }
+                if (key === "p6") {
+                    $("#p6  img").attr("src", tou);
+                }
+                if (key === "p7") {
+                    $("#p7  img").attr("src", tou);
+                }
+                if (key === "p8") {
+                    $("#p8 img").attr("src", tou);
+                }
+                if (key === "p9") {
+                    $("#p9  img").attr("src", tou);
+                }
+                if (key === "p10") {
+                    $("#p10  img").attr("src", tou);
+                }
+            }
+            isAll = uniqs(list);
+            return isAll;
+        }
+
+        /**
+         * 异步渲染
+         */
+        function asynRenderMember(list) {
+            renderMember(list);
+        }
+        //console.log(state);
+
+        var stateman = new StateMan();
+        stateman
+            .state(state)
+            .on("notfound", function() {
+                this.go('index');
+            })
+            .start({});
+    </script>
+</body>
+
+</html>

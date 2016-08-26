@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	@@include('../../template/head.html')
+	<title>欧冠有奖竞猜狂欢夜</title>
+
+	<link rel="stylesheet" type="text/css" href="@@ROOT/act/guess/index.css">
+	<link rel="stylesheet" type="text/css" href="../../widgets/swiper/swiper-3.3.1.min.css">
+</head>
+<body>
+	<div class="contain">
+		<img src="@@ROOT/act/guess/img/fm_bg.jpg">
+		<div class="gu_title"></div>
+		<p class="into">答题入口></p>
+		<div class="teamvs animated">
+			<img src="@@ROOT/act/guess/img/vs.png">
+		</div>
+		<div class="btn_rule"></div>
+	</div>
+	<!-- 音乐 -->
+	<aside class="media-wrap">
+	    <i id="musicBtn" class="music-btn on"></i>
+	</aside>
+	<audio src="./music.mp3" id="autoplay" autoplay="autoplay" loop="loop" ></audio>
+	<!-- 活动规则浮层 -->
+	<div class="res_contain">
+		<img src="@@ROOT/act/guess/img/jp_bg.jpg">
+		<div class="btn_close"></div>
+	</div>
+	<!-- 答题 -->
+	<div class="ans_contain">
+	    <div class="backBox"><div class="back"></div></div>
+		<form id="ansForm">
+		<div class="swiper-container">
+		<ul class="ans_list swiper-wrapper">
+			<li class="swiper-slide">
+				<p class="ans_title">1. 本届欧冠杯的冠军将会花落谁家？</p>
+				<div class="cho_list">
+					<input type="radio" name="firstQue" value="A">
+					<label class="cho_con">A.  皇马  </label>
+					<input type="radio" name="firstQue" value="B">
+					<label class="cho_con">B.  马竞 </label>
+				</div>
+			</li>
+			<li class="swiper-slide">
+				<p class="ans_title">2. 参赛双方能否在90分钟内决出高下？</p>
+				<div class="cho_list">
+					<input type="radio" name="secondQue" value="A">
+					<label class="cho_con">A.能 </label>
+					<input type="radio" name="secondQue" value="B">
+					<label class="cho_con">B.不能 </label>
+				</div>
+			</li>
+			<li class="swiper-slide">
+				<p class="ans_title">3. C罗能否在本场比赛中获得进球（常规时间90分钟内）</p>
+				<div class="cho_list">
+					<input type="radio" name="thirdQue" value="A">
+					<label class="cho_con">A.能 </label>
+					<input type="radio" name="thirdQue" value="B">
+					<label class="cho_con">B.不能 </label>
+				</div>
+			</li>
+			<li class="swiper-slide">
+				<p class="ans_title">
+				4. 托雷斯能否在本场比赛中获得进球（常规时间90分钟内）</p>
+				<div class="cho_list">
+					<input type="radio" name="fourthQue" value="A">
+					<label class="cho_con">A.能 </label>
+					<input type="radio" name="fourthQue" value="B">
+					<label class="cho_con">B.不能 </label>
+				</div>
+			</li>
+			<li class="swiper-slide">
+				<p class="ans_title">
+				5. 欧冠联赛的主题曲是什么？</p>
+				<div class="cho_list">
+					<input type="radio" name="fifthQue" value="A">
+					<label class="cho_con cho_w">
+					 A. <span class="f_40">《Zadok the priest》&nbsp;</span></label>
+					<input type="radio" name="fifthQue" value="B">
+					<label class="cho_con">
+					 B. <span class="f_40">《Champions League》&nbsp;</span></label>
+				</div>
+			</li>
+			<li class="swiper-slide gw">
+				<p class="ans_title">
+				6. 一比分（体育比分）<br>官方公众号ID是？</p>
+				<div class="cho_list">
+					<input type="radio" name="sixthQue" value="A">
+					<label class="cho_con">A.live13322&nbsp;</label>
+					<input type="radio" name="sixthQue" value="B">
+					<label class="cho_con">B.13322live&nbsp; </label>
+					 <input type="radio" name="sixthQue" value="C">
+					 <label class="cho_con">C.13322&nbsp; </label>
+				</div>
+			</li>
+			<li class="swiper-slide userInfo">
+				<div class="res_tit">
+					<img src="@@ROOT/act/guess/img/fm_title.png">
+				</div>
+				<p class="res_title">
+				请正确填写个人联系方式，我们将以电话通知获奖幸运儿</p>
+				<div class="res_info">
+					<input type="text" id="userName" placeholder="姓名" maxlength="15">
+					<input type="text" id="userPhone" placeholder="手机号" maxlength="11">
+					<button type="button" class="btn_submit">提交</button>
+				</div>
+			</li>
+		</ul>
+		</div>
+		</form>
+		<!-- tips -->
+		<div class="tips">
+			<p class="t_info">请输入手机号</p>
+		</div>
+		<div class="mask" id="J_Mask">
+			<img src="@@ROOT/act/guess/img/loading.gif">
+		</div>
+	</div>
+	<!-- 关注 -->
+	<div class="foc_contain">
+		<img src="@@ROOT/act/guess/img/gz_bg.jpg">
+		<div class="btn_focus" id="gu_focus" style="display:none;">关  注</div>
+		<div class="surprised" id="gu_jx">扫 码 有 惊 喜！</div>
+	</div>
+	@@include('../../template/foot.html')
+	<script type="text/javascript" src="../../widgets/swiper/swiper-3.3.1.min.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+			@@include('./index.js')
+	</script>
+</html>

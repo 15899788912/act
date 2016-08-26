@@ -1,0 +1,274 @@
+@IMGURL: '@@ROOT/act/pic/img';
+.mask {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: lightgrey;
+    opacity: 0.5;
+}
+input {
+    BACKGROUND-COLOR: #a92003;
+    color: white;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+.tip {
+    .mask {
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    .info-tip {
+        width: 80% !important;
+        left: 10% !important;
+        right: 10% !important;
+        font-size: 16px !important;
+    }
+    .tips {
+        //position: fixed;
+        //z-index: 3;
+        //width: 60%;
+        //min-height: 100px;
+        //line-height: 50px;
+        //font-size: 16px;
+        //margin: 0 auto;
+        //top: 180px;
+        //left: 20%;
+        //right: 20%;
+        ///* margin-left: -3.8em; */
+        //background: rgba(40, 40, 40, 0.75);
+        //text-align: center;
+        //border-radius: 5px;
+        //color: #FFFFFF;
+        position: fixed;
+        z-index: 3;
+        width: 60%;
+        min-height: 100px;
+        line-height: 16px;
+        padding: 5%;
+        font-size: 16px;
+        margin: 0 auto;
+        top: 180px;
+        left: 15%;
+        right: 15%;
+        background: rgba(40, 40, 40, 0.75);
+        border-radius: 5px;
+        color: #FFFFFF;
+    }
+}
+.bg {
+    background-image: url("@{IMGURL}/img/bg.png");
+    background-size: cover;
+    background-repeat: repeat-y;
+    position: relative;
+    font-family: "Microsoft YaHei";
+    color: white;
+    font-size: 0.18rem;
+    .content {
+        background-image: url("@{IMGURL}/img/xf.png");
+        background-size: cover;
+        position: absolute;
+        top: 1.88rem;
+        left: 51%;
+        transform: translate(-50%);
+        margin: 0 auto;
+        width: 5rem;
+        height: 5.86rem;
+        .info {
+            position: relative;
+            top: 2rem;
+            padding: 0 0.35rem;
+            margin: 0 auto;
+            span {
+                width: 1.26rem;
+                float: left;
+                text-align: right;
+            }
+            div {
+                margin-top: 0.44rem;
+            }
+            div::after {
+                clear: both;
+            }
+            .phone_row {
+                input {
+                    margin-left: 0.20rem;
+                    height: 0.35rem;
+                    width: 2.50rem;
+                }
+            }
+            .img_row {
+                height: 1.30rem;
+                .add_img {
+                    width: 0.69rem;
+                    height: 0.38rem;
+                    line-height: 0.38rem;
+                    border: 1px solid white;
+                    border-radius: 2px;
+                    display: block;
+                    float: left;
+                    text-align: center;
+                    margin-left: 0.20rem;
+                }
+            }
+            .code_row {
+                input,
+                span {
+                    float: left;
+                }
+                input {
+                    margin-left: 0.20rem;
+                    width: 1.30rem;
+                    height: 0.35rem;
+                }
+                .code_img {
+                    margin-left: 0.20rem;
+                    width: 1.30rem;
+                    height: 0.35rem;
+                    float: left;
+                }
+            }
+            .share_img {
+                margin-left: 0.20rem;
+                width: 1.30rem;
+                height: 1.30rem;
+                float: left;
+            }
+        }
+    }
+    .footer {
+        position: absolute;
+        top: 8.13rem;
+        left: 50%;
+        transform: translateX(-50%);
+        .btn {
+            width: 3.20rem;
+            height: 0.69rem;
+            border-radius: 5px;
+            background-color: #eccd03;
+            font-size: 0.33rem;
+            font-family: "Microsoft Yahei";
+        }
+    }
+}
+.new_bg {
+    .clear {
+        clear: both;
+    }
+    input {
+        height: 0.40rem;
+        color: black;
+        font-family: "Microsoft YaHei";
+    }
+    background-image: url("@{IMGURL}/img/new_bg.jpg");
+    background-size: cover;
+    background-repeat: repeat-y;
+    position: relative;
+    font-family: "Microsoft YaHei";
+    color: white;
+    font-size: 0.24rem;
+    width: 6.4rem;
+    height: 11.36rem;
+    .content {
+        position: absolute;
+        top: 3.34rem;
+        left: 50%;
+        transform: translate(-50%);
+        .phone_row {
+            input {
+                height: 0.7rem;
+                width: 4.34rem;
+                color: black;
+                //box-shadow: 0 0 0 3px rgba(201,201,201,.9),0 0 0 6px rgba(197,48,29,.8);
+                background-image: url("@{IMGURL}/img/input.png");
+                background-size: cover;
+                padding-left: 6px;
+                margin-top: 0.1rem;
+            }
+        }
+        .img_row {
+            margin-top: 0.20rem;
+            a {
+                width: 1.0rem;
+                div {
+                    width: 0.9rem;
+                }
+            }
+            .share_img,
+            a {
+                float: left;
+            }
+            .share_img {
+                width: 2rem;
+                height: 1.86rem;
+                margin-right: 0.40rem;
+                margin-top: 0.1rem;
+            }
+            .add_img {
+                margin-top: 0.3rem;
+                position: relative;
+                img {
+                    float: left;
+                    width: 2.5rem;
+                    height: 1.59rem;
+                }
+                .click_info {
+                    position: absolute;
+                    top: 37%;
+                    left: 0;
+                    width: 2.5rem;
+                    text-align: center;
+                }
+            }
+        }
+        .code_row {
+            margin-top: 0.20rem;
+            input {
+                float: left;
+                margin-right: 0.30rem;
+                width: 2.37rem;
+                height: 0.73rem;
+                background-image: url("@{IMGURL}/img/code_input.png");
+                background-size: cover;
+                padding-left: 6px;
+                margin-top: 0.1rem;
+            }
+            .code_bg {
+                float: left;
+                background-image: url("@{IMGURL}/img/v_code.png");
+                background-size: cover;
+                width: 1.10rem;
+                height: 0.48rem;
+                margin-top: 0.1rem;
+                .code_img {
+                    width: 1.82rem;
+                    height: 0.73rem;
+                    margin-top: 0.03rem;
+                }
+            }
+        }
+    }
+    .footer {
+        position: absolute;
+        top: 9.12rem;
+        left: 50%;
+        transform: translateX(-50%);
+        .btn {
+            width: 3.11rem;
+            height: 0.91rem;
+            background-color: transparent;
+            background-size: cover;
+            border-radius: 7px;
+        }
+    }
+}
